@@ -3,7 +3,7 @@ project (cryptoauthlib)
 
 # Set the current release version
 set(VERSION "2018.10.26")
-set(VERSION_MAJOR 2028)
+set(VERSION_MAJOR 2018)
 set(VERSION_MINOR 10)
 set(VERSION_PATCH 26)
 
@@ -35,7 +35,7 @@ set(DEFAULT_STORE_PATH "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/${PROJECT_NAME}"
     STRING "The default location of the filestore directory")
 endif()
 
-set(DEFAULT_CONF_FILE_NAME "${PROJECT_NAME}.conf" CACHE 
+set(DEFAULT_CONF_FILE_NAME "${PROJECT_NAME}.conf" CACHE
     STRING "The default file for library configuration")
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -58,7 +58,7 @@ set(CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
 set(CPACK_PACKAGE_VERSION_PATCH ${VERSION_PATCH})
 set(CPACK_GENERATOR "TGZ")
 set(CPACK_SOURCE_GENERATOR "TGZ")
-set(CPACK_SOURCE_IGNORE_FILES "build/*;\\.git/*")
+set(CPACK_SOURCE_IGNORE_FILES "build/*;.git/*")
 
 include(CPack)
 
@@ -85,4 +85,3 @@ install(CODE "
                  DESTINATION ${DEFAULT_STORE_PATH})
         endif()
         ")
-

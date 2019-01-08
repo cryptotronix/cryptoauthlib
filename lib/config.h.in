@@ -1,0 +1,1 @@
+#cmakedefine ATCA_HAL_I2C_BUS @ATCA_HAL_I2C_BUS@

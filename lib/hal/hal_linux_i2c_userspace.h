@@ -28,6 +28,8 @@
 #ifndef HAL_LINUX_I2C_USERSPACE_H_
 #define HAL_LINUX_I2C_USERSPACE_H_
 
+#include "config.h"
+
 /** \defgroup hal_ Hardware abstraction layer (hal_)
  *
  * \brief
@@ -35,7 +37,11 @@
  *
    @{ */
 
+#ifndef ATCA_HAL_I2C_BUS
 #define MAX_I2C_BUSES   2   // Raspberry Pi has 2 TWI
+#else
+#define MAX_I2C_BUSES   (ATCA_HAL_I2C_BUS + 1)
+#endif
 
 // A structure to hold I2C information
 typedef struct atcaI2Cmaster
