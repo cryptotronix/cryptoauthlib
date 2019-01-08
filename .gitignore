@@ -57,3 +57,20 @@ build/
 *.pyc
 .dist/
 dist/
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles
+CMakeScripts
+Testing
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+*.so
+config.h
+cryptoauthlib.conf
