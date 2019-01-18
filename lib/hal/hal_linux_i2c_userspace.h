@@ -37,11 +37,11 @@
  *
    @{ */
 
-#ifndef ATCA_HAL_I2C_BUS
-#define MAX_I2C_BUSES   2   // Raspberry Pi has 2 TWI
-#else
-#define MAX_I2C_BUSES   (ATCA_HAL_I2C_BUS + 1)
-#endif
+// this is a really poor way of handling things for linux as there are way too many devices that 
+// support running linux, so without dynamically allocating an array based on probing the system
+// for exactly how many i2c devices exist, we just have to pick a large enough number to handle
+// most cases. 2 is not enough, but maybe 5 covers plenty of bases?
+#define MAX_I2C_BUSES   5
 
 // A structure to hold I2C information
 typedef struct atcaI2Cmaster

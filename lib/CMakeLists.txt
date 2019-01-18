@@ -6,7 +6,6 @@ option(ATCA_HAL_KIT_HID "Include the HID HAL Driver" ON)
 if(UNIX)
 option(ATCA_HAL_I2C "Include the I2C Hal Driver - Linux & MCU only" ON)
 endif()
-set(ATCA_HAL_I2C_BUS "0" CACHE STRING "Specify default I2C Bus. Default: 0")
 option(ATCA_PRINTF "Enable Debug print statements in library - not for production" OFF)
 option(ATCA_PKCS11 "Build PKCS11 Library" OFF)
 
@@ -62,10 +61,6 @@ endif()
 if(ATCA_PRINTF)
 add_definitions(-DATCAPRINTF)
 endif(ATCA_PRINTF)
-
-# Specify default I2C Bus
-# message(STATUS "ATCA_HAL_I2C_BUS: ${ATCA_HAL_I2C_BUS}")
-configure_file(config.h.in config.h @ONLY)
 
 add_library(cryptoauth SHARED ${CRYPTOAUTH_SRC} ${ATCACERT_DEF_SRC})
 include_directories(cryptoauth PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ../third_party/hidapi/hidapi ${LIBUSB_INCLUDE_DIR})
