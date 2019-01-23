@@ -28,8 +28,6 @@
 #ifndef HAL_LINUX_I2C_USERSPACE_H_
 #define HAL_LINUX_I2C_USERSPACE_H_
 
-#include "config.h"
-
 /** \defgroup hal_ Hardware abstraction layer (hal_)
  *
  * \brief

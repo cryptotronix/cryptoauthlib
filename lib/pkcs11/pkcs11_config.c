@@ -398,7 +398,11 @@ static CK_RV pkcs11_config_parse_interface(pkcs11_slot_ctx_ptr slot_ctx, char* c
         slot_ctx->interface_config = &cfg_ateccx08a_i2c_default;
         if (argc > 1)
         {
-            cfg_ateccx08a_i2c_default.atcai2c.slave_address = (uint8_t)strtol(argv[1], NULL, 16);
+            cfg_ateccx08a_i2c_default.atcai2c.bus = (uint8_t)strtol(argv[1], NULL, 10);
+        }
+        if (argc > 2)
+        {
+            cfg_ateccx08a_i2c_default.atcai2c.slave_address = (uint8_t)strtol(argv[2], NULL, 16);
         }
         rv = CKR_OK;
     }
