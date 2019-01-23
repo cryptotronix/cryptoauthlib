@@ -79,9 +79,10 @@ if(ATCA_HAL_KIT_HID)
 if(HAS_LIBUSB)
 target_link_libraries(cryptoauth usb-1.0)
 endif()
-target_link_libraries(cryptoauth udev rt)
+target_link_libraries(cryptoauth udev)
 endif()
 endif()
+target_link_libraries(cryptoauth rt)
 
 
 if(DEFAULT_LIB_PATH)
