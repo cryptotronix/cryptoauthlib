@@ -38,12 +38,12 @@ _PROJECT_URLS = {
 }
 
 # Include the compiled library in the resulting distribution
-_PACKAGE_DATA = {}
-if sys.platform is 'win32':
-    _PACKAGE_DATA['libcryptoauth'] = ['cryptoauth.dll']
-#elif sys.platform is 'darwin':
-else:
-    _PACKAGE_DATA['libcryptoauth'] = ['libcryptoauth.so']
+# _PACKAGE_DATA = {}
+# if sys.platform is 'win32':
+#     _PACKAGE_DATA['libcryptoauth'] = ['cryptoauth.dll']
+# #elif sys.platform is 'darwin':
+# else:
+#     _PACKAGE_DATA['libcryptoauth'] = ['libcryptoauth.so']
 
 # See if this is being built from an sdist structure
 if os.path.exists('lib') and os.path.exists('third_party'):
@@ -52,11 +52,11 @@ else:
     _sdist_build = False
 
 # See if the library is already installed
-try:
-    cdll.LoadLibrary('libcryptoauth.so')
-    _EXTENSIONS = None
-except:
-    _EXTENSIONS = [Extension('cryptoauthlib', sources=[])]
+# try:
+#     cdll.LoadLibrary('libcryptoauth.so')
+#     _EXTENSIONS = None
+# except:
+#     _EXTENSIONS = [Extension('cryptoauthlib', sources=[])]
 
 
 def copy_udev_rules(target):
@@ -181,13 +181,7 @@ if __name__ == '__main__':
         project_urls=_PROJECT_URLS,
         license=_LICENSE,
         classifiers=_CLASSIFIERS,
-        package_data=_PACKAGE_DATA,
-        include_package_data=True,
-        distclass=BinaryDistribution,
-        cmdclass=_COMMANDS,
-        setup_requires=['setuptools>=38.6.0', 'wheel'],
         install_requires=['enum34;python_version<"3.4"'],
-        ext_modules=_EXTENSIONS,
         python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4',
         zip_safe=False
     )

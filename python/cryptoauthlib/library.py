@@ -23,6 +23,7 @@ Cryptoauthlib Library Management
 
 import os.path
 import ctypes
+import platform
 from .exceptions import LibraryLoadError
 
 # Maps common name to the specific name used internally
@@ -75,16 +76,18 @@ def load_cryptoauthlib(lib=None):
     if lib is not None:
         _CRYPTO_LIB = lib
     else:
-        curr_path = os.path.abspath(os.path.dirname(__file__))
-        if os.path.exists(os.path.join(curr_path, "cryptoauth.dll")):
-            _CRYPTO_LIB = ctypes.cdll.LoadLibrary(os.path.join(curr_path, "cryptoauth.dll"))
-        elif os.path.exists(os.path.join(curr_path, "libcryptoauth.so")):
-            _CRYPTO_LIB = ctypes.cdll.LoadLibrary(os.path.join(curr_path, "libcryptoauth.so"))
-        elif os.path.exists(os.path.join(curr_path, "libcryptoauth.dylib")):
-            _CRYPTO_LIB = ctypes.cdll.LoadLibrary(os.path.join(curr_path, "libcryptoauth.dylib"))
+        pname = platform.uname()[0]
+        if pname == "Windows":
+            name = "cryptoauth.dll"
+        elif pname == "Linux":
+            name = "libcryptoauth.so"
+        elif pname == "Darwin":
+            name = "libcryptoauth.dylib"
         else:
             _CRYPTO_LIB = None
             raise LibraryLoadError('Unable to find library in {}'.format(curr_path))
+
+        _CRYPTO_LIB = ctypes.cdll.LoadLibrary(name)
 
 
 def get_cryptoauthlib():
