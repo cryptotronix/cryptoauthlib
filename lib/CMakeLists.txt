@@ -93,8 +93,3 @@ endif()
 if(DEFAULT_LIB_PATH)
   install(TARGETS ${PROJECT_NAME} DESTINATION ${DEFAULT_LIB_PATH})
 endif()
-
-if(DEFAULT_INCLUDE_PATH)
-  install(FILES cryptoauthlib.h "${CMAKE_CURRENT_SOURCE_DIR}/cryptoauthlib.h"
-    DESTINATION ${DEFAULT_INCLUDE_PATH} COMPONENT Devel)
-endif()
