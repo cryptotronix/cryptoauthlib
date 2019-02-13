@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 2.6.4)
 project (cryptoauthlib)
 
 # Set the current release version
-set(VERSION "2019.02.04")
+set(VERSION "2019.02.13")
 set(VERSION_MAJOR 2019)
 set(VERSION_MINOR 02)
-set(VERSION_PATCH 04)
+set(VERSION_PATCH 13)
 
 # Build Options
 option(BUILD_TESTS "Create Test Application with library" OFF)
@@ -21,6 +21,8 @@ if(WIN32)
 string(REPLACE "\\" "/" LOCAL_APP_DATA "$ENV{LOCALAPPDATA}/Microchip")
 set(DEFAULT_LIB_PATH "${LOCAL_APP_DATA}" CACHE
     STRING "The default absolute library path")
+set(DEFAULT_INCLUDE_PATH "${LOCAL_APP_DATA}/${PROJECT_NAME}" CACHE
+    STRING "The default library include path")
 set(DEFAULT_CONF_PATH "${LOCAL_APP_DATA}" CACHE
     STRING "The default location of ${PROJECT_NAME}.conf")
 set(DEFAULT_STORE_PATH "${LOCAL_APP_DATA}/${PROJECT_NAME}" CACHE
@@ -29,6 +31,8 @@ else()
 include(GNUInstallDirs)
 set(DEFAULT_LIB_PATH "${CMAKE_INSTALL_FULL_LIBDIR}" CACHE
     STRING "The default absolute library path")
+set(DEFAULT_INCLUDE_PATH "${CMAKE_INSTALL_FULL_INCLUDEDIR}/${PROJECT_NAME}" CACHE
+    STRING "The default library include path")
 set(DEFAULT_CONF_PATH "${CMAKE_INSTALL_FULL_SYSCONFDIR}/${PROJECT_NAME}" CACHE
     STRING "The default location of ${PROJECT_NAME}.conf")
 set(DEFAULT_STORE_PATH "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/${PROJECT_NAME}" CACHE
